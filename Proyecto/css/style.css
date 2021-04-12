@@ -31,6 +31,12 @@ body{
     border: 4px solid #d02e7b;
 }
 
+.responsive_img_albiongank{
+    width: 100%;
+    max-width: 600px;
+    border: 4px solid #d02e7b;
+}
+
 .centrado{
     text-align: center;
 }
