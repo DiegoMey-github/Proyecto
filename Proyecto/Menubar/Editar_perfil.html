@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar perfil</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/style.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#error").hide(); //ocultando el div de los errores
+
+            //indicar que las validaciones del formulario se ejecutaran solo cuando se
+            //presione el submit
+            $("#formulario_contacto").submit(function () {
+                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+
+                if ($("#nombre_completo").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
+                }
+
+                if ($("#correo").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El correo electrónico no puede estar vacío";
+                }
+
+                if (isNaN($("#telefono").val())) {
+                    mensaje = mensaje + "<br>El teléfono solo pueden ser números";
+                }
+
+                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
+                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+                    $("#error").show();//hace visible el div
+                    event.preventDefault();//evita que los datos del formulario se envien
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -54,6 +86,95 @@
     </nav>
     <br> <br>
 
-    
+    <div class="container espaciado_superior">
+
+        <center>
+            <h1>Crea tu cuenta</h1>
+        </center>
+
+        <form action="home.html" method="POST" name="formulario_crearcuenta" id="formulario_crearcuenta">
+
+            <div class="form-group">
+                <label for="nombre_apellido">Nombre y Apellido:</label>
+                <input type="text" class="form-control" name="nombre_apellido" id="nombre_apellido"
+                    placeholder="Ingrese su nombre y apellido">
+            </div>
+
+            <div class="form-group">
+                <label for="nombre_usuario">Nombre de Usuario:</label>
+                <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
+                    placeholder="Ingrese el nombre de usuario">
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Eletrónico:</label>
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="rgb_lovers@ejemplo.com">
+            </div>
+
+            <p>Género:</p>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="genero">
+                    <input type="radio" class="form-check-input" name="genero" id="genero" value="masculino" checked>Masculino
+                </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="genero">
+                    <input type="radio" class="form-check-input" name="genero" id="genero" value="femenino">Femenino
+                </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="genero">
+                    <input type="radio" class="form-check-input" name="genero" id="genero" value="otros">Otros
+                </label>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label for="fecha">Fecha de nacimiento</label>
+                <input type="date" class="form-control" name="fecha" id="fecha" min="1920-01-01" max="2022-01-01">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono</label>
+                <input type="tel" class="form-control" name="telefono" id="telefono">
+            </div>
+
+            <div class="form-group">
+                <label for="ciudad">Seleccione su Pais</label>
+                <select name="ciudad" id="ciudad" class="form-control">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="España">España</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Mexico">México</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Panama">Panamá</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Perú</option>
+                    <option value="Republica Dominicana">República Dominicana</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Otros">Otros</option>             
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div id="error" class="alert alert-danger"></div>
+                <button type="reset" class="btn btn-dark">Limpiar Campos</button>
+                <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+            </div>
+        </form>
+    </div>
+
 </body>
+
 </html>
