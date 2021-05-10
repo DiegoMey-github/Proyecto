@@ -18,15 +18,32 @@
 
             //indicar que las validaciones del formulario se ejecutaran solo cuando se
             //presione el submit
-            $("#formulario_olvcon2").submit(function () {
+            $("#formulario_olvcon3").submit(function () {
                 var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var contrasena = $('#contrasena').val();
+                var contrasena2 = $('#contrasena2').val();
+                if ($("#contrasena").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Contraseña no debe estar vacío";
+                }
+                if ($("#contrasena2").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Ingrese Contraseña Nuevamente no debe estar vacío";
+                }
+                if (contrasena.length >= 8) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>Debe tener un minimo de 8 caracteres";
+                }
+                if (contrasena.length <= 20) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>Debe tener un maximo de 20 caracteres";
+                }
+                if (contrasena == contrasena2) {
 
-                if ($("#cod_con").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo codigo no debe estar vacío";
+                } else {
+                    mensaje = mensaje + "<br>Las contraseñas deben ser iguales";
                 }
-                if (isNaN($("#cod_con").val())) {
-                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
-                }
+                
 
                 if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
                     $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
@@ -34,7 +51,7 @@
                     event.preventDefault();//evita que los datos del formulario se envien
                 }
             });
-        });
+        });;
     </script>
 
 
@@ -83,30 +100,35 @@
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
-          <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534);">
-            <h2 style="color: #dadada;">Olvide mi Contraseña</h2>
-            <form action="home.html" method="POST" name="formulario_olvcon2" id="formulario_olvcon2">
-                <br><br>
-    
-                <div class="form-group">
-                    <h4>Se procedio a enviar un codigo a su correo electrónico</h2>
-                    <label style="color: #dadada;" for="nombre_usuario">Codigo:</label>
+            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534);">
+                <h2 style="color: #dadada;">Restaurar contraseña</h2>
+                <form action="Log_in.html" method="POST" name="formulario_olvcon3" id="formulario_olvcon3">
+                    <br><br>
 
-                    <input type="tel" class="form-control" name="cod_con" id="cod_con"
-                        placeholder="937583">
-                </div>
-    
-                <div class="form-group">
-                    <div id="error" class="alert alert-danger"></div>
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                </div>
-                
-                <a href="Log_in.html">Iniciar Sesión</a> <br><br>
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="correo">Ingrese Contraseña:</label>
+                        <input type="password" class="form-control" name="contrasena" id="contrasena" 
+                            placeholder="*************">
+                    </div>
 
-            </form>
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="correo">Ingrese Contraseña Nuevamente:</label>
+                        <input type="password" class="form-control" name="contrasena2" id="contrasena2" 
+                            placeholder="*************">
+                    </div>
+
+                    <div class="form-group">
+                        <div id="error" class="alert alert-danger"></div>
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
+
+                    
+
+                </form>
+            </div>
         </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    </div>
 </body>
+
 </html>
