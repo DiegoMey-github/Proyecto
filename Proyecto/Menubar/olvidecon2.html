@@ -18,19 +18,14 @@
 
             //indicar que las validaciones del formulario se ejecutaran solo cuando se
             //presione el submit
-            $("#formulario_contacto").submit(function () {
+            $("#formulario_olvcon2").submit(function () {
                 var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
 
-                if ($("#nombre_completo").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
+                if ($("#cod_con").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo codigo no debe estar vacío";
                 }
-
-                if ($("#correo").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El correo electrónico no puede estar vacío";
-                }
-
-                if (isNaN($("#telefono").val())) {
-                    mensaje = mensaje + "<br>El teléfono solo pueden ser números";
+                if (isNaN($("#cod_con").val())) {
+                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
                 }
 
                 if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
@@ -89,28 +84,24 @@
     <div class="container separar_bottom">
         <div class="row">
           <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534);">
-            <h2 style="color: #dadada;">LOG IN</h2>
-            <form action="home.html" method="POST" name="formulario_crearcuenta" id="formulario_crearcuenta">
+            <h2 style="color: #dadada;">Olvide mi Contraseña</h2>
+            <form action="home.html" method="POST" name="formulario_olvcon2" id="formulario_olvcon2">
                 <br><br>
     
                 <div class="form-group">
-                    <label style="color: #dadada;" for="nombre_usuario">Nombre de Usuario:</label>
-                    <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
-                        placeholder="Ingrese el nombre de usuario">
-                </div>
-    
-                <div class="form-group">
-                    <label style="color: #dadada;" for="correo">Correo Eletrónico:</label>
-                    <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="*************">
+                    <h4>Se procedio a enviar un codigo a su correo electrónico</h2>
+                    <label style="color: #dadada;" for="nombre_usuario">Codigo:</label>
+
+                    <input type="tel" class="form-control" name="cod_con" id="cod_con"
+                        placeholder="937583">
                 </div>
     
                 <div class="form-group">
                     <div id="error" class="alert alert-danger"></div>
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                    <a href="olvidecon3.html" button type="submit" class="btn btn-primary">Aceptar</button>
                 </div>
                 
-                <a href="olvidecon.html">¿Has olvidado tu contraseña?</a> <br><br>
-                <a href="sign_in.html">¿No tienes cuenta? Create una ahora mismo :)</a>
+                <a href="Log_in.html">Iniciar Sesión</a> <br><br>
 
             </form>
         </div>
