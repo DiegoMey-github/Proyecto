@@ -18,10 +18,27 @@
 
             //indicar que las validaciones del formulario se ejecutaran solo cuando se
             //presione el submit
-            $("#formulario_sesion").submit(function () {
+            $("#formulario_crearcuen").submit(function () {
                 var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
-                var nombre_usuario = $('#nombre_usuario').val();
+                var nombre_completo = $('#nombre_completo').val();
                 var contrasena = $('#contrasena').val();
+                var nombre_usuario = $('#nombre_usuario').val();
+                if ($("#nombre_completo").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
+                }
+
+                if (nombre_completo.length >= 10) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>Nombre y Apellido deben tener un minimo de 10 caracteres";
+                }
+
+                if (nombre_completo.length <= 35) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>Nombre y Apellido debe tener un maximo de 35 caracteres";
+                }
+
                 if ($("#nombre_usuario").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo nombre de usuario no debe estar vacío";
                 }
@@ -38,8 +55,12 @@
                     mensaje = mensaje + "<br>El nombre de usuario debe tener un maximo de 20 caracteres";
                 }
 
+                if ($("#correo_elec").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El correo electrónico no puede estar vacío";
+                }
+
                 if ($("#contrasena").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo contraseña no debe estar vacío";
+                    mensaje = mensaje + "<br>El campo Contraseña no debe estar vacío";
                 }
 
                 if (contrasena.length >= 8) {
@@ -58,6 +79,7 @@
                     $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
                     $("#error").show();//hace visible el div
                     event.preventDefault();//evita que los datos del formulario se envien
+
                 }
             });
         });
@@ -109,15 +131,51 @@
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
-            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534); color: #dadada; border: 2px solid rgba(255, 0, 0, 0.424);"> <br>
-                <h2>LOG IN</h2>
-                <form action="../Home.html" method="POST" name="formulario_sesion" id="formulario_sesion">
-                    <br>
+            <div class="container espaciado_superior centrado"
+                style="background-color: rgba(0, 0, 0, 0.534); color: #b1b1b1; border: 2px solid rgba(255, 0, 0, 0.424);">
+                <h2>CREA TU CUENTA</h2>
+
+                <form action="../Home.html" method="POST" name="formulario_crearcuen" id="formulario_crearcuen">
+
+                    <br><br>
 
                     <div class="form-group">
-                        <label style="color: #dadada;" for="nombre_usuario">Nombre de Usuario:</label>
+                        <label for="nombre_completo">Nombre y Apellido:</label>
+                        <input type="text" class="form-control" name="nombre_completo" id="nombre_completo"
+                            placeholder="Ingrese su nombre y apellido">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre_usuario">Nombre de Usuario:</label>
                         <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
                             placeholder="Ingrese el nombre de usuario">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="correo_elec">Correo Electrónico:</label>
+                        <input type="email" class="form-control" name="correo_elec" id="correo_elec"
+                            placeholder="rgb_lovers@ejemplo.com">
+                    </div>
+
+                    <p>Género:</p>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero" value="masculino"
+                                checked>Masculino
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero"
+                                value="femenino">Femenino
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero" value="otros">Otros
+                        </label>
                     </div>
 
                     <div class="form-group">
@@ -128,17 +186,22 @@
 
                     <div class="form-group">
                         <div id="error" class="alert alert-danger"></div>
-                        <button type="submit" class="btn btn-primary">Aceptar</button>
+
+
+                        <a href="olvidecon2.html">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </a>
+
                     </div>
 
-                    <a href="olvidecon.html">¿Has olvidado tu contraseña?</a> <br><br>
-                    <a href="sign_in.html">¿No tienes cuenta? Create una ahora mismo :)</a> <br><br>
+                    <a href="Log_in.html">Volver</a> <br><br>
 
                 </form>
             </div>
         </div>
     </div>
     </div>
+
 </body>
 
 </html>

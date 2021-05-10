@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Olvide mi contraseña</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -20,6 +20,7 @@
             //presione el submit
             $("#formulario_olvcon2").submit(function () {
                 var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var codcon = $('#codcon').val();
 
                 if ($("#codcon").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo codigo no debe estar vacío";
@@ -27,8 +28,14 @@
                 if (isNaN($("#codcon").val())) {
                     mensaje = mensaje + "<br>El codigo solo pueden ser números";
                 }
-//validar min y max 6num
+
+                if (codcon.length == 6) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>El codigo son solo 6 números";
+                }
                 
+
 
                 if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
                     $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
@@ -85,31 +92,31 @@
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
-          <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534);">
-            <h2 style="color: #dadada;">Olvide mi Contraseña</h2>
-            <form action="olvidecon3.html" method="POST" name="formulario_olvcon2" id="formulario_olvcon2">
-                <br><br>
-    
-                <div class="form-group">
-                    <h4>Se procedio a enviar un codigo a su correo electrónico</h2>
-                    <label style="color: #dadada;" for="nombre_usuario">Codigo:</label>
+            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534);">
+                <h2 style="color: #dadada;">Olvide mi Contraseña</h2>
+                <form action="olvidecon3.html" method="POST" name="formulario_olvcon2" id="formulario_olvcon2">
+                    <br><br>
 
-                    <input type="tel" class="form-control" name="codcon" id="codcon"
-                        placeholder="937583">
-                </div>
-    
-                <div class="form-group">
-                    <div id="error" class="alert alert-danger"></div>
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                    <div class="form-group">
+                        <h4>Se procedio a enviar un codigo a su correo electrónico</h2>
+                            <label style="color: #dadada;" for="codcon">Codigo:</label>
 
-                </div>
-                
-                <a href="Log_in.html">Iniciar Sesión</a> <br><br>
+                            <input type="tel" class="form-control" name="codcon" id="codcon" placeholder="937583">
+                    </div>
 
-            </form>
+                    <div class="form-group">
+                        <div id="error" class="alert alert-danger"></div>
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+
+                    </div>
+
+                    <a href="Log_in.html">Iniciar Sesión</a> <br><br>
+
+                </form>
+            </div>
         </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    </div>
 </body>
+
 </html>
