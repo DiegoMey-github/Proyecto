@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Crear cuenta</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -23,18 +23,19 @@
                 var nombre_completo = $('#nombre_completo').val();
                 var contrasena = $('#contrasena').val();
                 var nombre_usuario = $('#nombre_usuario').val();
+                var contrasena2 = $('#contrasena2').val();
                 if ($("#nombre_completo").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
                 }
 
                 if (nombre_completo.length >= 10) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>Nombre y Apellido deben tener un minimo de 10 caracteres";
                 }
 
                 if (nombre_completo.length <= 35) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>Nombre y Apellido debe tener un maximo de 35 caracteres";
                 }
@@ -44,13 +45,13 @@
                 }
 
                 if (nombre_usuario.length >= 8) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>El Nombre de Usuario debe tener un minimo de 8 caracteres";
                 }
 
                 if (nombre_usuario.length <= 20) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>El Nombre de Usuario debe tener un maximo de 20 caracteres";
                 }
@@ -64,16 +65,28 @@
                 }
 
                 if (contrasena.length >= 8) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>La contraseña debe tener un minimo de 8 caracteres";
                 }
 
                 if (contrasena.length <= 20) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>La contraseña debe tener un maximo de 20 caracteres";
                 }
+
+                if ($("#contrasena2").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Ingrese Contraseña Nuevamente no debe estar vacío";
+                }
+
+                if (contrasena == contrasena2) {
+
+                } else {
+                    mensaje = mensaje + "<br>Las contraseñas deben ser iguales";
+                }
+
+
 
                 if ($("#pais").val().trim().length == 1) {
                     mensaje = mensaje + "<br>Debe elegir un país valido";
@@ -128,7 +141,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Log_in.html">Log in</a>
+                    <a class="nav-link" href="Log_in.html">Iniciar sesión</a>
                 </li>
             </ul>
         </div>
@@ -214,6 +227,12 @@
                     <div class="form-group">
                         <label style="color: #dadada;" for="contrasena">Contraseña:</label>
                         <input type="password" class="form-control" name="contrasena" id="contrasena"
+                            placeholder="*************">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="contrasena2">Ingrese Contraseña Nuevamente:</label>
+                        <input type="password" class="form-control" name="contrasena2" id="contrasena2"
                             placeholder="*************">
                     </div>
 
